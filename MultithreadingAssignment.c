@@ -37,7 +37,7 @@ int main(){
 
 	int counter = 1;
 	//Run the program for 60 real time seconds
-	while((end - begin) < 61)
+	while((end - begin) < 63)
 	{
 		printf("%i ", counter++);
 		sell = randSeller();
@@ -59,7 +59,19 @@ int main(){
 		}
 
 		//checks if the time needs to update the ten spot
-		if((end - begin) > 8)
+		if((end - begin) > 58)
+		{
+			if((end-begin) % 60 == 0)
+			{
+				hour++;
+				ten -= 6;
+			}
+			if(minute%10 == 9)
+				ten++;
+			minute = (end - begin) % 10;
+
+		}
+		else if((end - begin) > 8)
 		{
 			if(minute%10 == 9)
 				ten++;
