@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <stdbool.h>
+#include <unistd.h>
 #include "MultithreadingAssignment.h"
 
 int randSeller();
@@ -23,31 +24,49 @@ int main(){
 
 	//Set the current seller
 	int sell = 0;
+
+	//set up timestamp
+	int hour = 0;
+	int tenth = 0;
+	int minute = 0;
 	seller currentSeller = H;
 
 	printf("%i\n", currentSeller);
 
 	end = time(NULL);
+
+	int counter = 0;
 	//Run the program for 60 real time seconds
-	while(difftime(end, begin) != 2)
+	while((end - begin) <= 60)
 	{
+		printf("%i ", counter++);
 		sell = randSeller();
 		currentSeller = (seller) sell;
 		//printf("%s\n", currentSeller.ToString());
 		switch(currentSeller){
-			H: printf("H"); break;
-			M1: printf("M1"); break;
-			M2: printf("M2"); break;
-			M3: printf("M3"); break;
-			L1: printf("L1"); break;
-			L2: printf("L2"); break;
-			L3: printf("L3"); break;
-			L4: printf("L4"); break;
-			L5: printf("L5"); break;
-			L6: printf("L6"); break;
-			default: printf("Nope");
+			case H: printf("Ticket Seller: H "); break;
+			case M1: printf("Ticket Seller: M1"); break;
+			case M2: printf("Ticket Seller: M2"); break;
+			case M3: printf("Ticket Seller: M3"); break;
+			case L1: printf("Ticker Seller: L1"); break;
+			case L2: printf("Ticket Seller: L2"); break;
+			case L3: printf("Ticket Seller: L3"); break;
+			case L4: printf("Ticket Seller: L4"); break;
+			case L5: printf("Ticket Seller: L5"); break;
+			case L6: printf("Ticket Seller: L6"); break;
+			default: printf("");
 		}
+
+		if((end - begin) > 10)
+		{
+			tenth = (end - begin)/2;
+			minute = (end - begin) % 10;
+		}
+		else
+			minute = (end - begin);
+		printf(" time stamp %i:%i%i", hour, tenth, minute);
 		printf("\n");
+		sleep(1);
 		end = time(NULL);
 	}
 
