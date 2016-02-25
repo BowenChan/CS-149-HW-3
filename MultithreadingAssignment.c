@@ -27,7 +27,7 @@ int main(){
 
 	//set up timestamp
 	int hour = 0;
-	int tenth = 0;
+	int ten = 0;
 	int minute = 0;
 	seller currentSeller = H;
 
@@ -35,14 +35,15 @@ int main(){
 
 	end = time(NULL);
 
-	int counter = 0;
+	int counter = 1;
 	//Run the program for 60 real time seconds
-	while((end - begin) <= 60)
+	while((end - begin) < 61)
 	{
 		printf("%i ", counter++);
 		sell = randSeller();
 		currentSeller = (seller) sell;
-		//printf("%s\n", currentSeller.ToString());
+
+		//Switch the statement between all the sellers
 		switch(currentSeller){
 			case H: printf("Ticket Seller: H "); break;
 			case M1: printf("Ticket Seller: M1"); break;
@@ -57,16 +58,24 @@ int main(){
 			default: printf("");
 		}
 
-		if((end - begin) > 10)
+		//checks if the time needs to update the ten spot
+		if((end - begin) > 8)
 		{
-			tenth = (end - begin)/2;
+			if(minute%10 == 9)
+				ten++;
 			minute = (end - begin) % 10;
 		}
 		else
 			minute = (end - begin);
-		printf(" time stamp %i:%i%i", hour, tenth, minute);
+
+		//prints out teh time stamp
+		printf(" time stamp %i:%i%i", hour, ten, minute);
 		printf("\n");
+
+		//delay the timer by one second
 		sleep(1);
+
+		//update the current time
 		end = time(NULL);
 	}
 
