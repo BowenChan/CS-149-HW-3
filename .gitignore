@@ -1,5 +1,11 @@
 .project
+
 .cproject
 /Debug
 
 
+/.dep.inc
+/Makefile
+/build
+/dist
+/nbproject
