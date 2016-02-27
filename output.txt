@@ -1,0 +1,913 @@
+N = 5
+
+0:00: A customer has arrived at seller L6
+0:01: A customer was assigned a seat at L6
+0:02: A customer has arrived at seller M2
+0:02: A customer has arrived at seller L1
+0:02: A customer was assigned a seat at L1
+0:02: A customer was assigned a seat at M2
+0:03: A customer has arrived at seller L1
+0:03: A customer has arrived at seller M2
+0:05: A customer has arrived at seller L3
+0:05: A customer was assigned a seat at L3
+0:05: A customer has completed their ticket purchase at L6
+0:06: A customer has arrived at seller M2
+0:06: A customer has arrived at seller M3
+0:06: A customer has completed their ticket purchase at M2
+0:06: A customer was assigned a seat at M2
+0:06: A customer was assigned a seat at M3
+0:08: A customer has completed their ticket purchase at L1
+0:08: A customer was assigned a seat at L1
+0:08: A customer has completed their ticket purchase at M2
+0:08: A customer was assigned a seat at M2
+0:08: A customer has completed their ticket purchase at M3
+0:09: A customer has completed their ticket purchase at L3
+0:11: A customer has completed their ticket purchase at M2
+0:13: A customer has arrived at seller M1
+0:13: A customer has arrived at seller L2
+0:13: A customer has completed their ticket purchase at L1
+0:13: A customer was assigned a seat at L2
+0:13: A customer was assigned a seat at M1
+0:14: A customer has arrived at seller L1
+0:14: A customer was assigned a seat at L1
+0:16: A customer has arrived at seller H
+0:16: A customer has arrived at seller H
+0:16: A customer has completed their ticket purchase at M1
+0:16: A customer was assigned a seat at H
+0:17: A customer has arrived at seller L2
+0:18: A customer has arrived at seller L6
+0:18: A customer has arrived at seller M3
+0:18: A customer has completed their ticket purchase at L2
+0:18: A customer was assigned a seat at L2
+0:18: A customer has completed their ticket purchase at H
+0:18: A customer was assigned a seat at H
+0:18: A customer was assigned a seat at M3
+0:18: A customer was assigned a seat at L6
+0:19: A customer has arrived at seller L3
+0:19: A customer was assigned a seat at L3
+0:20: A customer has arrived at seller L6
+0:20: A customer has completed their ticket purchase at H
+0:21: A customer has completed their ticket purchase at L1
+0:22: A customer has arrived at seller H
+0:22: A customer has arrived at seller L6
+0:22: A customer has completed their ticket purchase at M3
+0:22: A customer has completed their ticket purchase at L6
+0:22: A customer was assigned a seat at L6
+0:22: A customer was assigned a seat at H
+0:24: A customer has arrived at seller L5
+0:24: A customer has completed their ticket purchase at L2
+0:24: A customer has completed their ticket purchase at H
+0:24: A customer was assigned a seat at L5
+0:25: A customer has arrived at seller L5
+0:26: A customer has completed their ticket purchase at L3
+0:28: A customer has arrived at seller L4
+0:28: A customer has arrived at seller H
+0:28: A customer has arrived at seller L1
+0:28: A customer has arrived at seller L4
+0:28: A customer has arrived at seller L5
+0:28: A customer was assigned a seat at L1
+0:28: A customer was assigned a seat at H
+0:28: A customer was assigned a seat at L4
+0:29: A customer has completed their ticket purchase at L6
+0:29: A customer was assigned a seat at L6
+0:29: A customer has completed their ticket purchase at H
+0:30: A customer has completed their ticket purchase at L5
+0:30: A customer was assigned a seat at L5
+0:31: A customer has arrived at seller M3
+0:31: A customer was assigned a seat at M3
+0:32: A customer has arrived at seller L2
+0:32: A customer was assigned a seat at L2
+0:33: A customer has arrived at seller L3
+0:33: A customer has arrived at seller M2
+0:33: A customer has completed their ticket purchase at L1
+0:33: A customer was assigned a seat at L3
+0:33: A customer was assigned a seat at M2
+0:33: A customer has completed their ticket purchase at M3
+0:33: A customer has completed their ticket purchase at L4
+0:33: A customer was assigned a seat at L4
+0:35: A customer has completed their ticket purchase at M2
+0:36: A customer has completed their ticket purchase at L2
+0:36: A customer has completed their ticket purchase at L6
+0:37: A customer has arrived at seller M1
+0:37: A customer has completed their ticket purchase at L5
+0:37: A customer was assigned a seat at L5
+0:37: A customer was assigned a seat at M1
+0:38: A customer has arrived at seller L2
+0:38: A customer was assigned a seat at L2
+0:38: A customer has completed their ticket purchase at L4
+0:39: A customer has arrived at seller M3
+0:39: A customer was assigned a seat at M3
+0:40: A customer has completed their ticket purchase at L3
+0:40: A customer has completed their ticket purchase at M1
+0:41: A customer has arrived at seller L5
+0:42: A customer has completed their ticket purchase at M3
+0:42: A customer has completed their ticket purchase at L5
+0:42: A customer was assigned a seat at L5
+0:43: A customer has arrived at seller M2
+0:43: A customer was assigned a seat at M2
+0:44: A customer has arrived at seller L4
+0:44: A customer has arrived at seller H
+0:44: A customer has arrived at seller L2
+0:44: A customer was assigned a seat at L4
+0:44: A customer was assigned a seat at H
+0:45: A customer has completed their ticket purchase at L2
+0:45: A customer was assigned a seat at L2
+0:45: A customer has completed their ticket purchase at M2
+0:45: A customer has completed their ticket purchase at H
+0:46: A customer has arrived at seller M1
+0:46: A customer was assigned a seat at M1
+0:47: A customer has arrived at seller L4
+0:48: A customer has completed their ticket purchase at L5
+0:49: A customer has arrived at seller M1
+0:49: A customer has completed their ticket purchase at L2
+0:49: A customer has completed their ticket purchase at L4
+0:49: A customer was assigned a seat at L4
+0:49: A customer has completed their ticket purchase at M1
+0:49: A customer was assigned a seat at M1
+0:51: A customer has arrived at seller M3
+0:51: A customer has arrived at seller L3
+0:51: A customer was assigned a seat at L3
+0:51: A customer was assigned a seat at M3
+0:52: A customer has arrived at seller M1
+0:53: A customer has arrived at seller L6
+0:53: A customer was assigned a seat at L6
+0:53: A customer has completed their ticket purchase at L4
+0:53: A customer has completed their ticket purchase at M1
+0:53: A customer was assigned a seat at M1
+0:54: A customer has arrived at seller L1
+0:54: A customer was assigned a seat at L1
+0:55: A customer has arrived at seller L5
+0:55: A customer has completed their ticket purchase at M3
+0:55: A customer was assigned a seat at L5
+0:56: A customer has completed their ticket purchase at L3
+0:56: A customer has completed their ticket purchase at M1
+0:57: A customer has arrived at seller L4
+0:57: A customer was assigned a seat at L4
+0:58: A customer has arrived at seller L3
+0:58: A customer was assigned a seat at L3
+1:00: A customer has completed their ticket purchase at L1
+1:00: A customer has completed their ticket purchase at L6
+1:01: A customer has completed their ticket purchase at L5
+1:02: A customer has completed their ticket purchase at L4
+1:05: A customer has completed their ticket purchase at L3
+
+Seating Chart:
+H001 H002 H003 H004 H005 ---- ---- ---- ---- ---- 
+---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+M201 M202 M301 M203 M101 M302 M303 M204 M102 M304 
+M205 M103 M104 M305 M105 ---- ---- ---- ---- ---- 
+---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+L504 L403 L205 L404 L304 L605 L105 L505 L405 L305 
+L501 L104 L401 L604 L502 L203 L303 L402 L503 L204 
+L601 L101 L301 L102 L201 L103 L202 L602 L302 L603 
+
+H customers who got seats: 5
+M customers who got seats: 15
+L customers who got seats: 30
+H customers who were told to leave because tickets were sold out: 0
+M customers who were told to leave because tickets were sold out: 0
+L customers who were told to leave because tickets were sold out: 0
+H customers who were told to leave because the selling time was up: 0
+M customers who were told to leave because the selling time was up: 0
+L customers who were told to leave because the selling time was up: 0
+H customers who came when seller was closed: 0
+M customers who came when seller was closed: 0
+L customers who came when seller was closed: 0
+H customers who were impatient and left: 0
+M customers who were impatient and left: 0
+L customers who were impatient and left: 0
+
+
+
+
+N = 10
+
+0:00: A customer has arrived at seller L2
+0:00: A customer has arrived at seller M1
+0:00: A customer was assigned a seat at L2
+0:00: A customer has arrived at seller L5
+0:00: A customer was assigned a seat at M1
+0:01: A customer was assigned a seat at L5
+0:01: A customer has arrived at seller L6
+0:02: A customer has arrived at seller L1
+0:02: A customer has arrived at seller L3
+0:02: A customer was assigned a seat at L1
+0:02: A customer has completed their ticket purchase at M1
+0:02: A customer was assigned a seat at L3
+0:02: A customer was assigned a seat at L6
+0:03: A customer has arrived at seller M3
+0:03: A customer has arrived at seller M1
+0:03: A customer has arrived at seller L3
+0:03: A customer was assigned a seat at M3
+0:03: A customer was assigned a seat at M1
+0:04: A customer has arrived at seller L4
+0:04: A customer has arrived at seller M1
+0:04: A customer was assigned a seat at L4
+0:05: A customer has completed their ticket purchase at L5
+0:05: A customer has completed their ticket purchase at M3
+0:05: A customer has completed their ticket purchase at M1
+0:05: A customer was assigned a seat at M1
+0:06: A customer has arrived at seller L5
+0:06: A customer has arrived at seller L1
+0:06: A customer was assigned a seat at L5
+0:07: A customer has arrived at seller L5
+0:07: A customer has completed their ticket purchase at L2
+0:07: A customer has arrived at seller H
+0:07: A customer has arrived at seller M1
+0:07: A customer has completed their ticket purchase at L1
+0:07: A customer was assigned a seat at L1
+0:07: A customer has completed their ticket purchase at L3
+0:07: A customer was assigned a seat at L3
+0:07: A customer was assigned a seat at H
+0:08: A customer has arrived at seller L6
+0:08: A customer has arrived at seller M2
+0:08: A customer was assigned a seat at M2
+0:09: A customer has arrived at seller M3
+0:09: A customer has completed their ticket purchase at L6
+0:09: A customer was assigned a seat at L6
+0:09: A customer was assigned a seat at M3
+0:09: A customer has completed their ticket purchase at M1
+0:09: A customer was assigned a seat at M1
+0:09: A customer has completed their ticket purchase at H
+0:10: A customer has arrived at seller L1
+0:10: A customer has arrived at seller L3
+0:10: A customer has arrived at seller M3
+0:10: A customer has completed their ticket purchase at L4
+0:12: A customer has arrived at seller L6
+0:12: A customer has completed their ticket purchase at L5
+0:12: A customer was assigned a seat at L5
+0:12: A customer has completed their ticket purchase at L3
+0:12: A customer was assigned a seat at L3
+0:12: A customer has completed their ticket purchase at M2
+0:13: A customer has arrived at seller L3
+0:13: A customer has completed their ticket purchase at M3
+0:13: A customer was assigned a seat at M3
+0:13: A customer has completed their ticket purchase at M1
+0:14: A customer has arrived at seller L3
+0:14: A customer has arrived at seller M2
+0:14: A customer has completed their ticket purchase at L1
+0:14: A customer was assigned a seat at L1
+0:14: A customer has completed their ticket purchase at L6
+0:14: A customer was assigned a seat at L6
+0:14: A customer was assigned a seat at M2
+0:15: A customer has arrived at seller M2
+0:15: A customer has completed their ticket purchase at M3
+0:16: A customer has arrived at seller M3
+0:16: A customer has arrived at seller L6
+0:16: A customer has arrived at seller L3
+0:16: A customer was assigned a seat at M3
+0:16: A customer has completed their ticket purchase at M2
+0:16: A customer was assigned a seat at M2
+0:17: A customer has arrived at seller L6
+0:17: A customer has arrived at seller L3
+0:18: A customer has arrived at seller M1
+0:18: A customer has arrived at seller H
+0:18: A customer was assigned a seat at M1
+0:18: A customer has completed their ticket purchase at M2
+0:18: A customer was assigned a seat at H
+0:19: A customer has completed their ticket purchase at L1
+0:19: A customer has completed their ticket purchase at L5
+0:19: A customer has completed their ticket purchase at L3
+0:19: A customer was assigned a seat at L3
+0:19: A customer has completed their ticket purchase at M3
+0:20: A customer has arrived at seller L4
+0:20: A customer has completed their ticket purchase at L6
+0:20: A customer was assigned a seat at L6
+0:20: A customer has completed their ticket purchase at M1
+0:20: A customer was assigned a seat at L4
+0:20: A customer has completed their ticket purchase at H
+0:21: A customer has arrived at seller H
+0:21: A customer has arrived at seller L2
+0:21: A customer was assigned a seat at L2
+0:21: A customer was assigned a seat at H
+0:22: A customer has arrived at seller M3
+0:22: A customer was assigned a seat at M3
+0:23: A customer has arrived at seller L1
+0:23: A customer was assigned a seat at L1
+0:23: A customer has completed their ticket purchase at H
+0:24: A customer has arrived at seller L6
+0:24: A customer has arrived at seller L2
+0:24: A customer has completed their ticket purchase at L6
+0:24: A customer was assigned a seat at L6
+0:25: A customer has completed their ticket purchase at L3
+0:25: A customer at L3 was impatient and left the line
+0:25: A customer at L3 was impatient and left the line
+0:25: A customer was assigned a seat at L3
+0:26: A customer has completed their ticket purchase at M3
+0:27: A customer has arrived at seller M2
+0:27: A customer has completed their ticket purchase at L1
+0:27: A customer has completed their ticket purchase at L4
+0:27: A customer was assigned a seat at M2
+0:28: A customer has completed their ticket purchase at L2
+0:28: A customer was assigned a seat at L2
+0:29: A customer has arrived at seller L5
+0:29: A customer has arrived at seller L1
+0:29: A customer was assigned a seat at L1
+0:29: A customer was assigned a seat at L5
+0:29: A customer has completed their ticket purchase at M2
+0:30: A customer has arrived at seller L2
+0:30: A customer has arrived at seller L3
+0:31: A customer has completed their ticket purchase at L6
+0:31: A customer was assigned a seat at L6
+0:31: A customer has completed their ticket purchase at L3
+0:31: A customer was assigned a seat at L3
+0:32: A customer has arrived at seller L5
+0:32: A customer has arrived at seller M1
+0:32: A customer was assigned a seat at M1
+0:33: A customer has arrived at seller L2
+0:33: A customer has completed their ticket purchase at L1
+0:33: A customer has completed their ticket purchase at L5
+0:33: A customer was assigned a seat at L5
+0:34: A customer has arrived at seller L1
+0:34: A customer was assigned a seat at L1
+0:34: A customer has completed their ticket purchase at L2
+0:34: A customer was assigned a seat at L2
+0:34: A customer has completed their ticket purchase at M1
+0:35: A customer has arrived at seller L4
+0:35: A customer has completed their ticket purchase at L6
+0:35: A customer has completed their ticket purchase at L3
+0:35: A customer was assigned a seat at L4
+0:36: A customer has arrived at seller L4
+0:37: A customer has arrived at seller M1
+0:37: A customer has arrived at seller L4
+0:37: A customer was assigned a seat at M1
+0:38: A customer has completed their ticket purchase at L5
+0:39: A customer has arrived at seller L5
+0:39: A customer has arrived at seller M2
+0:39: A customer has arrived at seller L1
+0:39: A customer was assigned a seat at L5
+0:39: A customer has completed their ticket purchase at L4
+0:39: A customer was assigned a seat at L4
+0:39: A customer was assigned a seat at M2
+0:40: A customer has arrived at seller L1
+0:40: A customer has arrived at seller L2
+0:40: A customer has completed their ticket purchase at L1
+0:40: A customer was assigned a seat at L1
+0:40: A customer has completed their ticket purchase at M1
+0:41: A customer has completed their ticket purchase at L2
+0:41: A customer was assigned a seat at L2
+0:42: A customer has arrived at seller L5
+0:42: A customer has arrived at seller L6
+0:42: A customer was assigned a seat at L6
+0:43: A customer has arrived at seller L2
+0:43: A customer has arrived at seller M3
+0:43: A customer has arrived at seller L2
+0:43: A customer was assigned a seat at M3
+0:43: A customer has completed their ticket purchase at M2
+0:44: A customer has arrived at seller H
+0:44: A customer has arrived at seller M3
+0:44: A customer has arrived at seller L4
+0:44: A customer has completed their ticket purchase at L1
+0:44: A customer was assigned a seat at L1
+0:44: A customer was assigned a seat at H
+0:45: A customer has arrived at seller H
+0:45: A customer has arrived at seller H
+0:45: A customer has arrived at seller M2
+0:45: A customer has arrived at seller M2
+0:45: A customer has completed their ticket purchase at L5
+0:45: A customer was assigned a seat at L5
+0:45: A customer was assigned a seat at M2
+0:46: A customer has arrived at seller M3
+0:46: A customer has completed their ticket purchase at L4
+0:46: A customer was assigned a seat at L4
+0:46: A customer has completed their ticket purchase at H
+0:46: A customer was assigned a seat at H
+0:47: A customer has arrived at seller L5
+0:47: A customer has arrived at seller L4
+0:47: A customer has arrived at seller M2
+0:47: A customer has arrived at seller H
+0:47: A customer has completed their ticket purchase at L2
+0:47: A customer was assigned a seat at L2
+0:47: A customer has completed their ticket purchase at M3
+0:47: A customer was assigned a seat at M3
+0:48: A customer has arrived at seller L6
+0:48: A customer has arrived at seller L1
+0:48: A customer has completed their ticket purchase at H
+0:48: A customer was assigned a seat at H
+0:49: A customer has arrived at seller M3
+0:49: A customer has arrived at seller H
+0:49: A customer has arrived at seller H
+0:49: A customer has completed their ticket purchase at L6
+0:49: A customer was assigned a seat at L6
+0:49: A customer has completed their ticket purchase at M2
+0:49: A customer was assigned a seat at M2
+0:50: A customer has arrived at seller M3
+0:50: A customer has completed their ticket purchase at M3
+0:50: A customer was assigned a seat at M3
+0:50: A customer has completed their ticket purchase at H
+0:50: A customer was assigned a seat at H
+0:51: A customer has arrived at seller M2
+0:51: A customer has completed their ticket purchase at L1
+0:51: A customer was assigned a seat at L1
+0:51: A customer has completed their ticket purchase at L5
+0:51: A customer was assigned a seat at L5
+0:51: A customer has completed their ticket purchase at L4
+0:51: A customer was assigned a seat at L4
+0:51: A customer has completed their ticket purchase at H
+0:51: A customer was assigned a seat at H
+0:52: A customer has arrived at seller L4
+0:52: A customer has arrived at seller L3
+0:52: A customer has arrived at seller L6
+0:52: A customer has arrived at seller H
+0:52: A customer has completed their ticket purchase at L2
+0:52: A customer was assigned a seat at L2
+0:52: A customer was assigned a seat at L3
+0:52: A customer has completed their ticket purchase at M2
+0:52: A customer was assigned a seat at M2
+0:53: A customer has arrived at seller L2
+0:53: A customer has completed their ticket purchase at M3
+0:53: A customer was assigned a seat at M3
+0:53: A customer has completed their ticket purchase at H
+0:53: A customer was assigned a seat at H
+0:54: A customer has arrived at seller L6
+0:54: A customer has arrived at seller M2
+0:55: A customer has arrived at seller L3
+0:55: A customer has arrived at seller L5
+0:55: A customer has arrived at seller M1
+0:55: A customer has completed their ticket purchase at L6
+0:55: A customer was assigned a seat at L6
+0:55: A customer has completed their ticket purchase at L5
+0:55: A customer was assigned a seat at L5
+0:55: A customer has completed their ticket purchase at M2
+0:55: A customer was assigned a seat at M2
+0:55: A customer was assigned a seat at M1
+0:55: A customer has completed their ticket purchase at H
+0:55: A customer was assigned a seat at H
+0:56: A customer has arrived at seller L4
+0:56: A customer has arrived at seller L2
+0:56: A customer has completed their ticket purchase at L2
+0:56: A customer was assigned a seat at L2
+0:56: A customer has completed their ticket purchase at L3
+0:56: A customer was assigned a seat at L3
+0:56: A customer has completed their ticket purchase at M3
+0:56: A customer was assigned a seat at M3
+0:56: A customer has completed their ticket purchase at H
+0:57: A customer has arrived at seller M1
+0:57: A customer has arrived at seller M1
+0:57: A customer has completed their ticket purchase at M1
+0:57: A customer was assigned a seat at M1
+0:58: A customer has arrived at seller L1
+0:58: A customer has arrived at seller L5
+0:58: A customer has completed their ticket purchase at L1
+0:58: A customer was assigned a seat at L1
+0:58: A customer has completed their ticket purchase at L4
+0:58: A customer was assigned a seat at L4
+0:58: A customer has completed their ticket purchase at M2
+0:58: A customer was assigned a seat at M2
+0:59: A customer has arrived at seller L4
+0:59: A customer has completed their ticket purchase at M3
+0:59: A customer has completed their ticket purchase at M1
+0:59: A customer was assigned a seat at M1
+1:00: A customer has completed their ticket purchase at L6
+1:00: A customer was assigned a seat at L6
+1:01: A customer has completed their ticket purchase at L5
+1:01: Remaining 1 customer(s) at L5 are being told to leave since the selling time is up
+1:01: A customer has completed their ticket purchase at M2
+1:02: A customer has completed their ticket purchase at L2
+1:02: Remaining 2 customer(s) at L2 are being told to leave since the selling time is up
+1:02: A customer has completed their ticket purchase at L3
+1:02: Remaining 2 customer(s) at L3 are being told to leave since the selling time is up
+1:02: A customer has completed their ticket purchase at L4
+1:02: Remaining 3 customer(s) at L4 are being told to leave since the selling time is up
+1:02: A customer has completed their ticket purchase at M1
+1:04: A customer has completed their ticket purchase at L1
+1:05: A customer has completed their ticket purchase at L6
+
+Seating Chart:
+H001 H002 H003 H004 H005 H006 H007 H008 H009 H010 
+M110 L610 ---- ---- ---- ---- ---- ---- ---- ---- 
+L509 M209 M108 L208 L308 M310 M109 L110 L407 M210 
+M207 M308 L109 L508 L406 L207 L307 M208 M309 L609 
+M101 M301 M102 M103 M201 M302 M104 M303 M202 M304 
+M203 M105 M305 M204 M106 M107 M205 M306 M206 M307 
+L506 L404 L107 L205 L607 L108 L507 L405 L206 L608 
+L305 L203 L105 L504 L606 L306 L505 L106 L204 L403 
+L503 L303 L103 L603 L304 L604 L402 L202 L104 L605 
+L201 L501 L101 L301 L601 L401 L502 L102 L302 L602 
+
+H customers who got seats: 10
+M customers who got seats: 30
+L customers who got seats: 52
+H customers who were told to leave because tickets were sold out: 0
+M customers who were told to leave because tickets were sold out: 0
+L customers who were told to leave because tickets were sold out: 0
+H customers who were told to leave because the selling time was up: 0
+M customers who were told to leave because the selling time was up: 0
+L customers who were told to leave because the selling time was up: 6
+H customers who came when seller was closed: 0
+M customers who came when seller was closed: 0
+L customers who came when seller was closed: 0
+H customers who were impatient and left: 0
+M customers who were impatient and left: 0
+L customers who were impatient and left: 2
+
+
+
+N = 15
+
+0:00: A customer has arrived at seller L4
+0:01: A customer has arrived at seller M2
+0:01: A customer has arrived at seller H
+0:01: A customer has arrived at seller L1
+0:01: A customer was assigned a seat at L4
+0:01: A customer was assigned a seat at M2
+0:01: A customer was assigned a seat at H
+0:02: A customer has arrived at seller L2
+0:02: A customer has arrived at seller M1
+0:02: A customer has arrived at seller M2
+0:02: A customer was assigned a seat at L1
+0:02: A customer was assigned a seat at L2
+0:02: A customer was assigned a seat at M1
+0:02: A customer has completed their ticket purchase at H
+0:03: A customer has arrived at seller L4
+0:03: A customer has arrived at seller L4
+0:04: A customer has arrived at seller M1
+0:04: A customer has arrived at seller M3
+0:04: A customer has completed their ticket purchase at M2
+0:04: A customer was assigned a seat at M2
+0:04: A customer was assigned a seat at M3
+0:05: A customer has arrived at seller L2
+0:05: A customer has arrived at seller M1
+0:05: A customer has arrived at seller M2
+0:05: A customer has arrived at seller L5
+0:05: A customer has arrived at seller L5
+0:05: A customer was assigned a seat at L5
+0:05: A customer has completed their ticket purchase at M1
+0:05: A customer was assigned a seat at M1
+0:06: A customer has arrived at seller L1
+0:06: A customer has arrived at seller L2
+0:06: A customer has arrived at seller M3
+0:06: A customer has arrived at seller L3
+0:06: A customer has completed their ticket purchase at L1
+0:06: A customer was assigned a seat at L1
+0:06: A customer has arrived at seller L6
+0:06: A customer was assigned a seat at L6
+0:06: A customer was assigned a seat at L3
+0:06: A customer has completed their ticket purchase at M2
+0:06: A customer was assigned a seat at M2
+0:07: A customer has completed their ticket purchase at L2
+0:07: A customer was assigned a seat at L2
+0:08: A customer has completed their ticket purchase at L4
+0:08: A customer was assigned a seat at L4
+0:08: A customer has completed their ticket purchase at M3
+0:08: A customer was assigned a seat at M3
+0:08: A customer has completed their ticket purchase at M2
+0:08: A customer has completed their ticket purchase at M1
+0:08: A customer was assigned a seat at M1
+0:09: A customer has arrived at seller M2
+0:09: A customer was assigned a seat at M2
+0:10: A customer has arrived at seller M3
+0:10: A customer has arrived at seller L1
+0:10: A customer has arrived at seller L5
+0:10: A customer has completed their ticket purchase at L5
+0:10: A customer was assigned a seat at L5
+0:10: A customer has completed their ticket purchase at L3
+0:10: A customer has completed their ticket purchase at M3
+0:10: A customer was assigned a seat at M3
+0:10: A customer has completed their ticket purchase at M1
+0:11: A customer has arrived at seller L4
+0:11: A customer has completed their ticket purchase at L1
+0:11: A customer was assigned a seat at L1
+0:11: A customer has completed their ticket purchase at L6
+0:12: A customer has arrived at seller L1
+0:12: A customer has arrived at seller H
+0:12: A customer has completed their ticket purchase at M2
+0:12: A customer has completed their ticket purchase at M3
+0:12: A customer was assigned a seat at H
+0:13: A customer has arrived at seller L6
+0:13: A customer was assigned a seat at L6
+0:14: A customer has arrived at seller L2
+0:14: A customer has completed their ticket purchase at L2
+0:14: A customer was assigned a seat at L2
+0:14: A customer has completed their ticket purchase at L5
+0:14: A customer was assigned a seat at L5
+0:14: A customer has completed their ticket purchase at L4
+0:14: A customer was assigned a seat at L4
+0:14: A customer has completed their ticket purchase at H
+0:15: A customer has arrived at seller M2
+0:15: A customer has arrived at seller L4
+0:15: A customer has completed their ticket purchase at L1
+0:15: A customer was assigned a seat at L1
+0:15: A customer was assigned a seat at M2
+0:16: A customer has arrived at seller L5
+0:17: A customer has completed their ticket purchase at M2
+0:18: A customer has arrived at seller M3
+0:18: A customer has arrived at seller L1
+0:18: A customer has completed their ticket purchase at L5
+0:18: A customer was assigned a seat at L5
+0:18: A customer was assigned a seat at M3
+0:19: A customer has arrived at seller L3
+0:19: A customer has arrived at seller L2
+0:19: A customer has arrived at seller L2
+0:19: A customer has arrived at seller L6
+0:19: A customer has arrived at seller L6
+0:19: A customer has completed their ticket purchase at L2
+0:19: A customer was assigned a seat at L2
+0:19: A customer was assigned a seat at L3
+0:20: A customer has arrived at seller L1
+0:20: A customer has arrived at seller M3
+0:20: A customer has arrived at seller H
+0:20: A customer has completed their ticket purchase at L6
+0:20: A customer was assigned a seat at L6
+0:20: A customer was assigned a seat at H
+0:21: A customer has arrived at seller L3
+0:21: A customer has arrived at seller L6
+0:21: A customer has arrived at seller L6
+0:21: A customer has completed their ticket purchase at L1
+0:21: A customer was assigned a seat at L1
+0:21: A customer has completed their ticket purchase at L4
+0:21: A customer was assigned a seat at L4
+0:21: A customer has completed their ticket purchase at M3
+0:21: A customer was assigned a seat at M3
+0:22: A customer has arrived at seller M1
+0:22: A customer was assigned a seat at M1
+0:22: A customer has completed their ticket purchase at H
+0:23: A customer has arrived at seller M2
+0:23: A customer has arrived at seller H
+0:23: A customer has arrived at seller M1
+0:23: A customer has completed their ticket purchase at L2
+0:23: A customer at L2 was impatient and left the line
+0:23: A customer was assigned a seat at L2
+0:23: A customer has completed their ticket purchase at M3
+0:23: A customer was assigned a seat at M2
+0:23: A customer was assigned a seat at H
+0:24: A customer has arrived at seller H
+0:24: A customer has arrived at seller L6
+0:24: A customer has completed their ticket purchase at L6
+0:24: A customer was assigned a seat at L6
+0:24: A customer has completed their ticket purchase at M1
+0:24: A customer was assigned a seat at M1
+0:25: A customer has arrived at seller M3
+0:25: A customer has arrived at seller H
+0:25: A customer has arrived at seller M1
+0:25: A customer has arrived at seller M2
+0:25: A customer has arrived at seller L3
+0:25: A customer has arrived at seller L6
+0:25: A customer has completed their ticket purchase at L5
+0:25: A customer has completed their ticket purchase at L4
+0:25: A customer was assigned a seat at L4
+0:25: A customer has completed their ticket purchase at L3
+0:25: A customer was assigned a seat at L3
+0:25: A customer was assigned a seat at M3
+0:25: A customer has completed their ticket purchase at H
+0:25: A customer was assigned a seat at H
+0:26: A customer has arrived at seller L1
+0:26: A customer has arrived at seller M2
+0:26: A customer has arrived at seller M1
+0:26: A customer has completed their ticket purchase at H
+0:26: A customer was assigned a seat at H
+0:27: A customer has arrived at seller H
+0:27: A customer has arrived at seller L4
+0:27: A customer has completed their ticket purchase at M3
+0:27: A customer has completed their ticket purchase at M2
+0:27: A customer was assigned a seat at M2
+0:27: A customer has completed their ticket purchase at H
+0:27: A customer was assigned a seat at H
+0:28: A customer has arrived at seller L1
+0:28: A customer has completed their ticket purchase at L1
+0:28: A customer was assigned a seat at L1
+0:28: A customer has completed their ticket purchase at M1
+0:28: A customer was assigned a seat at M1
+0:28: A customer has completed their ticket purchase at H
+0:29: A customer has arrived at seller L3
+0:29: A customer has arrived at seller L3
+0:29: A customer has arrived at seller L2
+0:29: A customer has arrived at seller L4
+0:29: A customer has arrived at seller L4
+0:29: A customer has completed their ticket purchase at L2
+0:29: A customer was assigned a seat at L2
+0:30: A customer has arrived at seller M3
+0:30: A customer has arrived at seller L4
+0:30: A customer has arrived at seller L5
+0:30: A customer was assigned a seat at L5
+0:30: A customer was assigned a seat at M3
+0:31: A customer has arrived at seller L3
+0:31: A customer has completed their ticket purchase at L6
+0:31: A customer at L6 was impatient and left the line
+0:31: A customer at L6 was impatient and left the line
+0:31: A customer was assigned a seat at L6
+0:31: A customer has completed their ticket purchase at L3
+0:31: A customer was assigned a seat at L3
+0:31: A customer has completed their ticket purchase at M2
+0:31: A customer was assigned a seat at M2
+0:32: A customer has arrived at seller H
+0:32: A customer has completed their ticket purchase at L1
+0:32: A customer at L1 was impatient and left the line
+0:32: A customer was assigned a seat at L1
+0:32: A customer has completed their ticket purchase at L4
+0:32: A customer was assigned a seat at L4
+0:32: A customer has completed their ticket purchase at M1
+0:32: A customer was assigned a seat at M1
+0:32: A customer was assigned a seat at H
+0:33: A customer has arrived at seller L6
+0:33: A customer has arrived at seller L6
+0:33: A customer has completed their ticket purchase at M3
+0:34: A customer has arrived at seller M2
+0:34: A customer has arrived at seller L2
+0:34: A customer has arrived at seller H
+0:34: A customer has completed their ticket purchase at L2
+0:34: A customer was assigned a seat at L2
+0:34: A customer has completed their ticket purchase at M2
+0:34: A customer was assigned a seat at M2
+0:34: A customer has completed their ticket purchase at H
+0:34: A customer was assigned a seat at H
+0:35: A customer has arrived at seller H
+0:35: A customer has arrived at seller L1
+0:35: A customer has completed their ticket purchase at H
+0:35: A customer was assigned a seat at H
+0:36: A customer has arrived at seller L5
+0:36: A customer has completed their ticket purchase at L6
+0:36: A customer was assigned a seat at L6
+0:36: A customer has completed their ticket purchase at M1
+0:37: A customer has arrived at seller M1
+0:37: A customer has arrived at seller L4
+0:37: A customer has arrived at seller L5
+0:37: A customer has completed their ticket purchase at L4
+0:37: A customer at L4 was impatient and left the line
+0:37: A customer at L4 was impatient and left the line
+0:37: A customer was assigned a seat at L4
+0:37: A customer has completed their ticket purchase at L5
+0:37: A customer was assigned a seat at L5
+0:37: A customer has completed their ticket purchase at L3
+0:37: A customer at L3 was impatient and left the line
+0:37: A customer at L3 was impatient and left the line
+0:37: A customer was assigned a seat at L3
+0:37: A customer was assigned a seat at M1
+0:37: A customer has completed their ticket purchase at H
+0:38: A customer has arrived at seller L3
+0:38: A customer has arrived at seller L3
+0:38: A customer has arrived at seller L4
+0:38: A customer has arrived at seller L4
+0:38: A customer has completed their ticket purchase at L2
+0:38: A customer has completed their ticket purchase at M2
+0:39: A customer has arrived at seller L2
+0:39: A customer has arrived at seller L2
+0:39: A customer has arrived at seller L1
+0:39: A customer has arrived at seller L6
+0:39: A customer has completed their ticket purchase at L1
+0:39: A customer was assigned a seat at L1
+0:39: A customer was assigned a seat at L2
+0:40: A customer has arrived at seller L2
+0:40: A customer has arrived at seller M1
+0:41: A customer has arrived at seller L3
+0:41: A customer has arrived at seller M3
+0:41: A customer has arrived at seller M2
+0:41: A customer has arrived at seller M2
+0:41: A customer has arrived at seller M3
+0:41: A customer has arrived at seller M3
+0:41: A customer has completed their ticket purchase at L6
+0:41: A customer at L6 was impatient and left the line
+0:41: A customer was assigned a seat at L6
+0:41: A customer has completed their ticket purchase at M1
+0:41: A customer was assigned a seat at M1
+0:41: A customer was assigned a seat at M2
+0:41: A customer was assigned a seat at M3
+0:42: A customer has arrived at seller H
+0:42: A customer has completed their ticket purchase at L5
+0:42: A customer was assigned a seat at L5
+0:42: A customer was assigned a seat at H
+0:43: A customer has arrived at seller M1
+0:43: A customer has arrived at seller L1
+0:43: A customer has arrived at seller L4
+0:43: A customer has arrived at seller L5
+0:43: A customer has completed their ticket purchase at L1
+0:43: A customer was assigned a seat at L1
+0:43: A customer has completed their ticket purchase at L4
+0:43: A customer was assigned a seat at L4
+0:43: A customer has completed their ticket purchase at M2
+0:43: A customer was assigned a seat at M2
+0:43: A customer has completed their ticket purchase at H
+0:44: A customer has arrived at seller L2
+0:44: A customer has arrived at seller L2
+0:44: A customer has arrived at seller L1
+0:44: A customer has arrived at seller H
+0:44: A customer has arrived at seller L3
+0:44: A customer has arrived at seller M2
+0:44: A customer has arrived at seller L5
+0:44: A customer has completed their ticket purchase at L3
+0:44: A customer was assigned a seat at L3
+0:44: A customer has completed their ticket purchase at M1
+0:44: A customer was assigned a seat at M1
+0:44: A customer was assigned a seat at H
+0:45: A customer has arrived at seller H
+0:45: A customer has arrived at seller L2
+0:45: A customer has arrived at seller L5
+0:45: A customer has completed their ticket purchase at L2
+0:45: A customer was assigned a seat at L2
+0:45: A customer has completed their ticket purchase at M3
+0:45: A customer was assigned a seat at M3
+0:45: A customer has completed their ticket purchase at M2
+0:45: A customer was assigned a seat at M2
+0:46: A customer has arrived at seller L2
+0:46: A customer has arrived at seller M3
+0:46: A customer has arrived at seller M1
+0:46: A customer has arrived at seller M1
+0:46: A customer has arrived at seller L5
+0:46: A customer has completed their ticket purchase at H
+0:46: A customer was assigned a seat at H
+0:47: A customer has arrived at seller M2
+0:47: A customer has arrived at seller L5
+0:47: A customer has completed their ticket purchase at L1
+0:47: A customer was assigned a seat at L1
+0:47: A customer has completed their ticket purchase at L6
+0:47: A customer was assigned a seat at L6
+0:47: A customer has completed their ticket purchase at L5
+0:47: A customer was assigned a seat at L5
+0:47: A customer has completed their ticket purchase at M1
+0:47: A customer was assigned a seat at M1
+0:47: A customer has completed their ticket purchase at M3
+0:47: A customer was assigned a seat at M3
+0:47: A customer has completed their ticket purchase at M2
+0:47: A customer was assigned a seat at M2
+0:47: A customer has completed their ticket purchase at H
+0:49: A customer has arrived at seller M2
+0:49: A customer has arrived at seller L3
+0:49: A customer has arrived at seller L5
+0:49: A customer has arrived at seller L6
+0:50: A customer has completed their ticket purchase at L2
+0:50: A customer at L2 was impatient and left the line
+0:50: A customer at L2 was impatient and left the line
+0:50: A customer at L2 was impatient and left the line
+0:50: A customer was assigned a seat at L2
+0:50: A customer has completed their ticket purchase at L4
+0:50: A customer at L4 was impatient and left the line
+0:50: A customer at L4 was impatient and left the line
+0:50: A customer was assigned a seat at L4
+0:50: A customer has completed their ticket purchase at L3
+0:50: A customer at L3 was impatient and left the line
+0:50: A customer at L3 was impatient and left the line
+0:50: A customer was assigned a seat at L3
+0:50: A customer has completed their ticket purchase at M3
+0:50: A customer was assigned a seat at M3
+0:51: A customer has arrived at seller M3
+0:51: A customer has arrived at seller L4
+0:51: A customer has arrived at seller L5
+0:51: A customer has completed their ticket purchase at M1
+0:51: Remaining 1 customer(s) at M1 are being told to leave since tickets are sold out
+0:51: A customer has completed their ticket purchase at M2
+0:51: Remaining 1 customer(s) at M2 are being told to leave since tickets are sold out
+0:52: A customer has arrived at seller L1
+0:52: A customer has arrived at seller H
+0:52: A customer has completed their ticket purchase at L1
+0:52: Remaining 3 customer(s) at L1 are being told to leave since tickets are sold out
+0:52: A customer has completed their ticket purchase at L6
+0:52: Remaining 4 customer(s) at L6 are being told to leave since tickets are sold out
+0:52: Remaining 1 customer(s) at H are being told to leave since tickets are sold out
+0:53: A customer has arrived at seller L1, but they were already closed
+0:53: A customer has arrived at seller M2, but they were already closed
+0:53: A customer has arrived at seller H, but they were already closed
+0:54: A customer has arrived at seller M1, but they were already closed
+0:54: A customer has arrived at seller M3
+0:54: A customer has arrived at seller L3
+0:54: A customer has arrived at seller L6, but they were already closed
+0:54: A customer has arrived at seller L6, but they were already closed
+0:54: A customer has completed their ticket purchase at L4
+0:54: Remaining 5 customer(s) at L4 are being told to leave since tickets are sold out
+0:54: A customer has completed their ticket purchase at L5
+0:54: Remaining 6 customer(s) at L5 are being told to leave since tickets are sold out
+0:54: A customer has completed their ticket purchase at L3
+0:54: Remaining 6 customer(s) at L3 are being told to leave since tickets are sold out
+0:54: A customer has completed their ticket purchase at M3
+0:54: Remaining 2 customer(s) at M3 are being told to leave since tickets are sold out
+0:55: A customer has arrived at seller M1, but they were already closed
+0:55: A customer has arrived at seller L3, but they were already closed
+0:55: A customer has completed their ticket purchase at L2
+0:55: Remaining 5 customer(s) at L2 are being told to leave since tickets are sold out
+0:56: A customer has arrived at seller L4, but they were already closed
+0:57: A customer has arrived at seller M3, but they were already closed
+0:57: A customer has arrived at seller L1, but they were already closed
+0:57: A customer has arrived at seller L6, but they were already closed
+0:58: A customer has arrived at seller M1, but they were already closed
+0:58: A customer has arrived at seller L3, but they were already closed
+0:59: A customer has arrived at seller M3, but they were already closed
+0:59: A customer has arrived at seller L5, but they were already closed
+
+Seating Chart:
+H001 H002 H003 H004 H005 H006 H007 H008 H009 H010 
+H011 H012 H013 M111 M310 M213 L210 L409 L307 M311 
+L408 M211 L306 M110 L209 M309 M212 L110 L608 L508 
+M208 M107 M209 M108 L607 M109 M210 M308 L507 L109 
+M201 M101 M202 M301 M102 M203 M302 M103 M204 M303 
+M205 M304 M305 M104 M206 M105 M306 M207 M106 M307 
+L304 L107 L406 L207 L606 L407 L506 L305 L108 L208 
+L105 L404 L205 L604 L405 L303 L106 L206 L505 L605 
+L103 L602 L203 L503 L403 L104 L504 L204 L302 L603 
+L401 L101 L201 L501 L102 L601 L301 L202 L402 L502 
+
+H customers who got seats: 13
+M customers who got seats: 35
+L customers who got seats: 52
+H customers who were told to leave because tickets were sold out: 1
+M customers who were told to leave because tickets were sold out: 4
+L customers who were told to leave because tickets were sold out: 13
+H customers who were told to leave because the selling time was up: 0
+M customers who were told to leave because the selling time was up: 0
+L customers who were told to leave because the selling time was up: 0
+H customers who came when seller was closed: 1
+M customers who came when seller was closed: 6
+L customers who came when seller was closed: 9
+H customers who were impatient and left: 0
+M customers who were impatient and left: 0
+L customers who were impatient and left: 16

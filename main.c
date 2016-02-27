@@ -17,7 +17,7 @@ struct consumer_data {
     struct seller_data *seller;
 };
 
-struct seller_data thread_data_array[NUM_SELLERS];
+struct seller_data seller_data_array[NUM_SELLERS];
 static time_t start;
 static pthread_mutex_t mutex_seating = PTHREAD_MUTEX_INITIALIZER;
 static int h_sold, m_sold, l_sold;
@@ -53,10 +53,10 @@ void *ProcessSellers(void *threadarg) {
             sleep(1); // Sleep for 1 second if no one in line
         } else {
             pthread_mutex_lock(&mutex_seating);
-            int res = assign_seat(my_data); // Assign seating
+            int assigned = assign_seat(my_data); // Assign seating
             pthread_mutex_unlock(&mutex_seating);
             char *str = time_elapsed_string();
-            if (res == 1) {
+            if (assigned) {
                 int completion_time = 0;
                 if (my_data->type == H) {
                     completion_time = rand() % 2 + 1; // Sleep for 1 - 2
@@ -150,7 +150,7 @@ void *QueueConsumer(void *threadarg) {
             m_closed++;
         else
             l_closed++;
-        printf("%s: A customer has arrived but the seller was already closed %s\n", str, my_data->name);
+        printf("%s: A customer has arrived at seller %s, but they were already closed\n", str, my_data->name);
     }
     free(str);
     pthread_mutex_unlock(&my_data->mutex);
@@ -169,21 +169,21 @@ int main(int argc, char** argv) {
     start = time(NULL); // Record start time
     // Create all seller threads
     for (i = 0; i < NUM_SELLERS; i++) {
-        thread_data_array[i].name = sellers[i]; // Set seller name
+        seller_data_array[i].name = sellers[i]; // Set seller name
         // Set seller type
         switch (sellers[i][0]) {
             case 'H':
-                thread_data_array[i].type = H;
+                seller_data_array[i].type = H;
                 break;
             case 'M':
-                thread_data_array[i].type = M;
+                seller_data_array[i].type = M;
                 break;
             case 'L':
-                thread_data_array[i].type = L;
+                seller_data_array[i].type = L;
                 break;
         }
-        pthread_mutex_init(&thread_data_array[i].mutex, NULL);
-        pthread_create(&seller_threads[i], NULL, ProcessSellers, (void *) &thread_data_array[i]);
+        pthread_mutex_init(&seller_data_array[i].mutex, NULL); // Create mutex for each seller
+        pthread_create(&seller_threads[i], NULL, ProcessSellers, (void *) &seller_data_array[i]);
     }
 
     time_t t;
@@ -193,7 +193,7 @@ int main(int argc, char** argv) {
     // Create buyer threads
     for (i = 0; i < NUM_SELLERS; i++) {
         for (j = 0; j < tickets_per_seller; j++) {
-            pthread_create(&buy_threads[k++], NULL, QueueConsumer, (void *) &thread_data_array[i]);
+            pthread_create(&buy_threads[k++], NULL, QueueConsumer, (void *) &seller_data_array[i]);
         }
     }
     // Wait for buyer threads to finish
@@ -209,9 +209,9 @@ int main(int argc, char** argv) {
     printf("H customers who got seats: %d\n", h_sold);
     printf("M customers who got seats: %d\n", m_sold);
     printf("L customers who got seats: %d\n", l_sold);
-    printf("H customers who were told to leave because of ticket sellout: %d\n", h_leave);
-    printf("M customers who were told to leave because of ticket sellout: %d\n", m_leave);
-    printf("L customers who were told to leave because of ticket sellout: %d\n", l_leave);
+    printf("H customers who were told to leave because tickets were sold out: %d\n", h_leave);
+    printf("M customers who were told to leave because tickets were sold out: %d\n", m_leave);
+    printf("L customers who were told to leave because tickets were sold out: %d\n", l_leave);
     printf("H customers who were told to leave because the selling time was up: %d\n", h_closing);
     printf("M customers who were told to leave because the selling time was up: %d\n", m_closing);
     printf("L customers who were told to leave because the selling time was up: %d\n", l_closing);
