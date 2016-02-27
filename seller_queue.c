@@ -8,7 +8,7 @@
 #include "header.h"
 
 struct node {
-    int data;
+    int wait_timer;
     struct node *next;
 };
 
@@ -37,11 +37,40 @@ struct node* add_tail(struct seller_data *seller, int value) {
         a = a->next;
     }
     struct node* newNode = (struct node*) malloc(sizeof (struct node));
-    newNode->data = value;
+    newNode->wait_timer = value;
     newNode->next = NULL;
     if (seller->next == NULL)
         seller->next = newNode;
     else
         a->next = newNode;
     return newNode;
+}
+
+/* Increment wait timer for each buyer 
+ * Remove from queue if they have waited for 10 seconds
+ */
+int increment_wait_timer(struct seller_data *seller, int time, char* timestamp) {
+    int i = 0;
+    struct node* prev = NULL;
+    struct node* cur_buyer = seller->next;
+    while (cur_buyer != NULL) {
+        cur_buyer->wait_timer += time;
+        if (cur_buyer->wait_timer >= 10) {
+            i++;
+            printf("%s: A customer at %s was impatient and left the line\n", timestamp, seller->name);
+            if (prev == NULL) {
+                seller->next = cur_buyer->next;
+                cur_buyer = seller->next;
+                continue;
+            } else {
+                prev->next = cur_buyer->next;
+                free(cur_buyer);
+                cur_buyer = prev->next;
+                continue;
+            }
+        }
+        prev = cur_buyer;
+        cur_buyer = cur_buyer->next;
+    }
+    return i;
 }

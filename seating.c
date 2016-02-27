@@ -67,7 +67,7 @@ int assign_seat(struct seller_data *seller) {
 
 /* Print seating chart */
 void print_seating() {
-    printf("Seating Chart:\n");
+    printf("\nSeating Chart:\n");
     int i, j;
     for (i = 0; i < 10; i++) {
         for (j = 0; j < 10; j++) {

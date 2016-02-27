@@ -31,6 +31,7 @@ struct seller_data {
 struct node* add_tail(struct seller_data *seller, int value);
 struct node* remove_head(struct seller_data *seller);
 int is_empty(struct node *n);
+int increment_wait_timer(struct seller_data *seller, int time, char* timestamp);
 int assign_seat(struct seller_data *seller);
 void print_seating();
 

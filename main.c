@@ -24,6 +24,7 @@ static int h_sold, m_sold, l_sold;
 static int h_leave, m_leave, l_leave;
 static int h_closing, m_closing, l_closing;
 static int h_closed, m_closed, l_closed;
+static int h_left, m_left, l_left;
 
 /* Get time elapsed */
 int time_elapsed() {
@@ -56,26 +57,36 @@ void *ProcessSellers(void *threadarg) {
             pthread_mutex_unlock(&mutex_seating);
             char *str = time_elapsed_string();
             if (res == 1) {
+                int completion_time = 0;
+                if (my_data->type == H) {
+                    completion_time = rand() % 2 + 1; // Sleep for 1 - 2
+                } else if (my_data->type == M) {
+                    completion_time = rand() % 3 + 2; // Sleep for 2 - 4
+                } else {
+                    completion_time = rand() % 4 + 4; // Sleep for 4 - 7
+                }
                 pthread_mutex_lock(&my_data->mutex);
                 remove_head(my_data); // Remove first person from the line
-                printf("%s: Customer was assigned a seat from %s\n", str, my_data->name);
+                // Increment wait timer on all people in line and get amount of buyers who left
+                int cust_left = increment_wait_timer(my_data, completion_time, str);
+                printf("%s: A customer was assigned a seat at %s\n", str, my_data->name);
                 pthread_mutex_unlock(&my_data->mutex);
                 // Increments ticket sold
-                // Sleep for random time to generate minutes to complete sale
                 if (my_data->type == H) {
                     h_sold++;
-                    sleep(rand() % 2 + 1); // Sleep for 1 - 2
+                    h_left += cust_left;
                 } else if (my_data->type == M) {
                     m_sold++;
-                    sleep(rand() % 3 + 2); // Sleep for 2 - 4
+                    m_left += cust_left;
                 } else {
                     l_sold++;
-                    sleep(rand() % 4 + 4); // Sleep for 4 - 7
+                    l_left += cust_left;
                 }
+                // Sleep for random time to generate minutes to complete sale
+                sleep(completion_time);
                 free(str);
                 char *str2 = time_elapsed_string();
-                if (res == 1)
-                    printf("%s: Customer has completed ticket purchase at %s\n", str, my_data->name);
+                printf("%s: A customer has completed their ticket purchase at %s\n", str2, my_data->name);
                 free(str2);
             } else {
                 pthread_mutex_lock(&my_data->mutex);
@@ -129,7 +140,7 @@ void *QueueConsumer(void *threadarg) {
     pthread_mutex_lock(&my_data->mutex);
     char *str = time_elapsed_string();
     if (my_data->closed != 1) {
-        add_tail(my_data, 1); // Add to designated seller line
+        add_tail(my_data, 0); // Add to designated seller line
         printf("%s: A customer has arrived at seller %s\n", str, my_data->name);
     } else {
         // Increment customers who came when seller was closed
@@ -175,7 +186,6 @@ int main(int argc, char** argv) {
         pthread_create(&seller_threads[i], NULL, ProcessSellers, (void *) &thread_data_array[i]);
     }
 
-    //struct consumer_data buyer_data_array[NUM_SELLERS][tickets_per_seller];
     time_t t;
     srand((unsigned) time(&t)); // Generate RNG seed
     int j;
@@ -183,7 +193,6 @@ int main(int argc, char** argv) {
     // Create buyer threads
     for (i = 0; i < NUM_SELLERS; i++) {
         for (j = 0; j < tickets_per_seller; j++) {
-            //buyer_data_array[i][j] = &thread_data_array[i];
             pthread_create(&buy_threads[k++], NULL, QueueConsumer, (void *) &thread_data_array[i]);
         }
     }
@@ -209,5 +218,8 @@ int main(int argc, char** argv) {
     printf("H customers who came when seller was closed: %d\n", h_closed);
     printf("M customers who came when seller was closed: %d\n", m_closed);
     printf("L customers who came when seller was closed: %d\n", l_closed);
+    printf("H customers who were impatient and left: %d\n", h_left);
+    printf("M customers who were impatient and left: %d\n", m_left);
+    printf("L customers who were impatient and left: %d\n", l_left);
     return 0;
 }
