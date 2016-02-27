@@ -21,6 +21,7 @@ static char *seating[10][10] = {
     {"----", "----", "----", "----", "----", "----", "----", "----", "----", "----"}
 };
 
+/* Assign seating based on availability */
 int assign_seat(struct seller_data *seller) {
     int i, j;
     if (seller->type == H) {
@@ -64,7 +65,9 @@ int assign_seat(struct seller_data *seller) {
     return 0;
 }
 
+/* Print seating chart */
 void print_seating() {
+    printf("Seating Chart:\n");
     int i, j;
     for (i = 0; i < 10; i++) {
         for (j = 0; j < 10; j++) {
@@ -72,4 +75,5 @@ void print_seating() {
         }
         printf("\n");
     }
+    printf("\n");
 }

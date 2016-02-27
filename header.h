@@ -23,6 +23,8 @@ struct seller_data {
     pthread_mutex_t mutex;
     char *name;
     seller_type type;
+    int closed;
+    int cust_count;
     struct node *next;
 };
 

@@ -12,33 +12,28 @@ struct node {
     struct node *next;
 };
 
-void free_mem(struct node* a) {
-    if (a == NULL)
-        return;
-    else {
-        free_mem(a->next);
-        free(a);
-    }
-    return;
-}
-
+/* Check if this line is empty */
 int is_empty(struct node *n) {
     if (n == NULL)
         return 1;
     return 0;
 }
 
+/* Remove first buyer in line */
 struct node* remove_head(struct seller_data *seller) {
     if (seller->next == NULL) return NULL;
     struct node* new_head = seller->next->next;
     free(seller->next);
     seller->next = new_head;
+    seller->cust_count--;
     return new_head;
 }
 
+/* Add a buyer to end of line */
 struct node* add_tail(struct seller_data *seller, int value) {
+    seller->cust_count++;
     struct node* a = seller->next;
-    while (a != NULL) {
+    while (a != NULL && a->next != NULL) {
         a = a->next;
     }
     struct node* newNode = (struct node*) malloc(sizeof (struct node));
@@ -47,6 +42,6 @@ struct node* add_tail(struct seller_data *seller, int value) {
     if (seller->next == NULL)
         seller->next = newNode;
     else
-        seller->next->next = newNode;
+        a->next = newNode;
     return newNode;
 }

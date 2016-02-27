@@ -10,6 +10,7 @@
 #include <unistd.h>
 
 #define NUM_SELLERS 10
+#define SECS_TO_RUN 60
 
 struct consumer_data {
     char *name;
@@ -17,14 +18,22 @@ struct consumer_data {
 };
 
 struct seller_data thread_data_array[NUM_SELLERS];
-time_t start;
+static time_t start;
 static pthread_mutex_t mutex_seating = PTHREAD_MUTEX_INITIALIZER;
+static int h_sold, m_sold, l_sold;
+static int h_leave, m_leave, l_leave;
+static int h_closing, m_closing, l_closing;
+static int h_closed, m_closed, l_closed;
 
+/* Get time elapsed */
 int time_elapsed() {
     time_t end = time(NULL);
     return end - start;
 }
 
+/* Get time elapsed as a string. 
+ * i.e 0:30 for 30 seconds 
+ */
 char *time_elapsed_string() {
     int time = time_elapsed();
     int seconds = time % 60;
@@ -34,62 +43,123 @@ char *time_elapsed_string() {
     return str;
 }
 
+/* Method for sellers to run */
 void *ProcessSellers(void *threadarg) {
     struct seller_data *my_data;
     my_data = (struct seller_data *) threadarg;
-    while (time_elapsed() <= 60) {
+    while (time_elapsed() <= SECS_TO_RUN) { // Only run if time isn't up
         if (is_empty(my_data->next)) {
-            sleep(1);
+            sleep(1); // Sleep for 1 second if no one in line
         } else {
             pthread_mutex_lock(&mutex_seating);
-            int res = assign_seat(my_data);
+            int res = assign_seat(my_data); // Assign seating
+            pthread_mutex_unlock(&mutex_seating);
             char *str = time_elapsed_string();
             if (res == 1) {
+                pthread_mutex_lock(&my_data->mutex);
+                remove_head(my_data); // Remove first person from the line
                 printf("%s: Customer was assigned a seat from %s\n", str, my_data->name);
+                pthread_mutex_unlock(&my_data->mutex);
+                // Increments ticket sold
+                // Sleep for random time to generate minutes to complete sale
+                if (my_data->type == H) {
+                    h_sold++;
+                    sleep(rand() % 2 + 1); // Sleep for 1 - 2
+                } else if (my_data->type == M) {
+                    m_sold++;
+                    sleep(rand() % 3 + 2); // Sleep for 2 - 4
+                } else {
+                    l_sold++;
+                    sleep(rand() % 4 + 4); // Sleep for 4 - 7
+                }
+                free(str);
+                char *str2 = time_elapsed_string();
+                if (res == 1)
+                    printf("%s: Customer has completed ticket purchase at %s\n", str, my_data->name);
+                free(str2);
+            } else {
+                pthread_mutex_lock(&my_data->mutex);
+                printf("%s: Remaining %d customer(s) at %s are being told to leave since tickets are sold out\n", str, my_data->cust_count, my_data->name);
+                free(str);
+                // Remove and count everyone from the line
+                while (my_data->next != NULL) {
+                    remove_head(my_data);
+                    if (my_data->type == H)
+                        h_leave++;
+                    else if (my_data->type == M)
+                        m_leave++;
+                    else
+                        l_leave++;
+                }
+                my_data->closed = 1; // Set seller to closed
+                pthread_mutex_unlock(&my_data->mutex);
+                pthread_exit(NULL); // Exit seller thread
             }
-            remove_head(my_data);
-            pthread_mutex_unlock(&mutex_seating);
-            if (my_data->type == H)
-                sleep(rand() % 2 + 1);
-            else if (my_data->type == M)
-                sleep(rand() % 3 + 2);
-            else
-                sleep(rand() % 4 + 4);
-            free(str);
-            char *str2 = time_elapsed_string();
-            if (res == 1)
-                printf("%s: Customer has completed ticket purchase at %s\n", str, my_data->name);
-            free(str2);
         }
     }
+    pthread_mutex_lock(&my_data->mutex);
+    my_data->closed = 1; // Set seller to closed
+    int rem = my_data->cust_count;
+    if (rem != 0) {
+        char *str = time_elapsed_string();
+        printf("%s: Remaining %d customer(s) at %s are being told to leave since the selling time is up\n", str, my_data->cust_count, my_data->name);
+        free(str);
+        // Remove and count everyone from the line
+        while (my_data->next != NULL) {
+            remove_head(my_data);
+            if (my_data->type == H)
+                h_closing++;
+            else if (my_data->type == M)
+                m_closing++;
+            else
+                l_closing++;
+        }
+    }
+    pthread_mutex_unlock(&my_data->mutex);
 }
 
+/* Consumer method
+ * Sleeps for random amount of time and adds to seller line after
+ */
 void *QueueConsumer(void *threadarg) {
+    // Get thread args that contain designated seller info
     struct seller_data *my_data;
     my_data = (struct seller_data *) threadarg;
-    sleep(rand() % 60);
+    sleep(rand() % SECS_TO_RUN); // Sleep from 0 - 59 seconds
     pthread_mutex_lock(&my_data->mutex);
-    add_tail(my_data, 1);
-    pthread_mutex_unlock(&my_data->mutex);
     char *str = time_elapsed_string();
-    printf("%s: A customer has arrived at seller %s\n", str, my_data->name);
+    if (my_data->closed != 1) {
+        add_tail(my_data, 1); // Add to designated seller line
+        printf("%s: A customer has arrived at seller %s\n", str, my_data->name);
+    } else {
+        // Increment customers who came when seller was closed
+        if (my_data->type == H)
+            h_closed++;
+        else if (my_data->type == M)
+            m_closed++;
+        else
+            l_closed++;
+        printf("%s: A customer has arrived but the seller was already closed %s\n", str, my_data->name);
+    }
     free(str);
+    pthread_mutex_unlock(&my_data->mutex);
 }
 
 int main(int argc, char** argv) {
     int tickets_per_seller = 5;
-    if (argc == 2) {
-        tickets_per_seller = atoi(argv[1]);
+    if (argc == 2) { // Check if an arg was entered
+        tickets_per_seller = atoi(argv[1]); // Set tickets per seller to arg
     }
 
     char *sellers[NUM_SELLERS] = {"H", "M1", "M2", "M3", "L1", "L2", "L3", "L4", "L5", "L6"};
-    pthread_t threads[NUM_SELLERS];
+    pthread_t seller_threads[NUM_SELLERS];
     pthread_t buy_threads[NUM_SELLERS * tickets_per_seller];
-    int rc[NUM_SELLERS];
     int i;
-    start = time(NULL);
+    start = time(NULL); // Record start time
+    // Create all seller threads
     for (i = 0; i < NUM_SELLERS; i++) {
-        thread_data_array[i].name = sellers[i];
+        thread_data_array[i].name = sellers[i]; // Set seller name
+        // Set seller type
         switch (sellers[i][0]) {
             case 'H':
                 thread_data_array[i].type = H;
@@ -102,28 +172,42 @@ int main(int argc, char** argv) {
                 break;
         }
         pthread_mutex_init(&thread_data_array[i].mutex, NULL);
-        pthread_create(&threads[i], NULL, ProcessSellers, (void *) &thread_data_array[i]);
+        pthread_create(&seller_threads[i], NULL, ProcessSellers, (void *) &thread_data_array[i]);
     }
 
     //struct consumer_data buyer_data_array[NUM_SELLERS][tickets_per_seller];
     time_t t;
-    srand((unsigned) time(&t));
+    srand((unsigned) time(&t)); // Generate RNG seed
     int j;
     int k = 0;
+    // Create buyer threads
     for (i = 0; i < NUM_SELLERS; i++) {
         for (j = 0; j < tickets_per_seller; j++) {
             //buyer_data_array[i][j] = &thread_data_array[i];
             pthread_create(&buy_threads[k++], NULL, QueueConsumer, (void *) &thread_data_array[i]);
         }
     }
-
+    // Wait for buyer threads to finish
     for (j = 0; j < sizeof (buy_threads) / sizeof (buy_threads[0]); j++) {
         pthread_join(buy_threads[j], NULL);
     }
-    for (j = 0; j < sizeof (threads) / sizeof (threads[0]); j++) {
-        pthread_join(threads[j], NULL);
+    // Wait for seller threads to finish
+    for (j = 0; j < sizeof (seller_threads) / sizeof (seller_threads[0]); j++) {
+        pthread_join(seller_threads[j], NULL);
     }
     sleep(1);
     print_seating();
+    printf("H customers who got seats: %d\n", h_sold);
+    printf("M customers who got seats: %d\n", m_sold);
+    printf("L customers who got seats: %d\n", l_sold);
+    printf("H customers who were told to leave because of ticket sellout: %d\n", h_leave);
+    printf("M customers who were told to leave because of ticket sellout: %d\n", m_leave);
+    printf("L customers who were told to leave because of ticket sellout: %d\n", l_leave);
+    printf("H customers who were told to leave because the selling time was up: %d\n", h_closing);
+    printf("M customers who were told to leave because the selling time was up: %d\n", m_closing);
+    printf("L customers who were told to leave because the selling time was up: %d\n", l_closing);
+    printf("H customers who came when seller was closed: %d\n", h_closed);
+    printf("M customers who came when seller was closed: %d\n", m_closed);
+    printf("L customers who came when seller was closed: %d\n", l_closed);
     return 0;
 }
